@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #F4FFFF;
+  padding: 0;
+  margin: 0;
+}
+
+.top {
+  background: #E8FFFE;
+  width: 100vw;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.top p:first-child {
+  font-family: "Oregano", sans-serif;
+  color: #3A928E;
+  font-style: normal;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.top p:last-child {
+  font-family: "Montserrat", sans-serif;
+  color: #39837F;
+  font-style: normal;
+  font-size: 1.4rem;
+}

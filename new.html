@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./new.css">
+</head>
+<body>
+    <section class="home">
+        <div class="back-home">
+
+        </div>
+            <div class="container-name">
+                <p>W</p>
+                <p>I</p>
+                <p>K</p>
+                <p>U</p>
+                <p>N</p>
+            </div>
+    </section>
+    <script>
+        const backHome = document.querySelector('.back-home');
+        const letters = document.querySelectorAll('.container-name p');
+
+        function checkOverlap() {
+            const backHomeRect = backHome.getBoundingClientRect();
+            letters.forEach(letter => {
+                const letterRect = letter.getBoundingClientRect();
+                if (
+                    backHomeRect.left < letterRect.right &&
+                    backHomeRect.right > letterRect.left
+                ) {
+                    letter.classList.add('red');
+                } else {
+                    letter.classList.remove('red');
+                }
+            });
+        }
+
+        // Check overlap every animation frame
+        function animate() {
+            checkOverlap();
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+</body>
+</html>
