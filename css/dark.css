@@ -1,0 +1,189 @@
+:root {
+  --green: rgb(6, 227, 3);
+  --white: #f1f1f1;
+  --back-color: #0e0e0e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background: var(--back-color);
+  font-family: 'Montserrat', sans-serif;
+  color: #f1f1f1;
+  overflow-x: hidden;
+}
+
+.top {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-head {
+  width: 100%;
+}
+
+.text-head > p {
+  color: #b1b1b1;
+  letter-spacing: 5px;
+  font-size: 1.5vw;
+  margin-left: 20%;
+}
+
+#job {
+  margin-left: 20%;
+  display: flex;
+  justify-content: start;
+}
+
+#job > p {
+  font-size: 5.5vw;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+}
+
+#job p:first-child {
+  flex: 1 1 2.5em;
+  text-align: start;
+  color: var(--green);
+}
+
+#job p:last-child {
+  flex: 1 1 auto;
+  text-align: start;
+}
+
+.flip {
+  transform: rotateX(360deg);
+  transition: transform 0.8s;
+}
+
+.middle {
+  width: 100%;
+  padding-left: 20%;
+  padding-right: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-me > h1 {
+  font-size: 50px;
+  font-weight: 600;
+  color: var(--green);
+  margin: 0 0 40px 0;
+  padding: 0;
+}
+
+.about-me > p {
+  width: 80%;
+  margin: 0 0 40px 0;
+  font-weight: 300;
+  font-size: large;
+  padding: 0;
+}
+
+.about-me b {
+  color: var(--green);
+}
+
+.about-me a {
+  text-decoration: none;
+  color: rgb(7, 193, 255);
+  font-weight: bold;
+}
+
+.middle > div:last-child p {
+  color: var(--green);
+  font-weight: 700;
+}
+
+button {
+  background: none;
+  border: 2px solid var(--green);
+  color: var(--green);
+  border-radius: 15px;
+  padding: 10px 20px;
+  font-size: 20px;
+  margin-top: 20px;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Tambahkan properti transition */
+}
+
+button:hover {
+  background: var(--green);
+  color: var(--back-color);
+}
+
+img {
+  width: 367px;
+  height: 490px;
+}
+
+button{
+    border: none;
+    cursor: pointer;
+    color: white;
+    background: none;
+    transition: all .3s ease-in-out;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-view {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 44px 0;
+  transition: all 0.25s ease-in;
+}
+
+.carousel-view .item-list {
+  max-width: 950px;
+  width: 70vw;
+  padding: 50px 10px;
+  display: flex;
+  gap: 48px;
+  scroll-behavior: smooth;
+  transition: all 0.25s ease-in;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  overflow: auto;
+  scroll-snap-type: x mandatory;
+}
+
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.item-list::-webkit-scrollbar {
+  display: none;
+}
+
+.prev-btn {
+  background: none;
+  cursor: pointer;
+}
+
+.next-btn {
+  cursor: pointer;
+}
+
+.item {
+  scroll-snap-align: center;
+  min-width: 120px;
+  height: 120px;
+  background-color: deeppink;
+  border-radius:8px;
+}
