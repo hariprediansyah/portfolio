@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --green: rgb(6, 227, 3);
+    /* --green: #e74c3c; */
+    --white: #f1f1f1;
+    --back-color: #0e0e0e;
+  }
+  
+  h1,
+  h2,
+  h3,
+  h4,
+  p {
+    margin: 0;
+    padding: 0;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    padding: 0;
+    margin: 0;
+    background: var(--back-color);
+    font-family: 'Montserrat', sans-serif;
+    color: #f1f1f1;
+    overflow-x: hidden;
+  }

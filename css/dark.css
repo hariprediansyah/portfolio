@@ -1,5 +1,6 @@
 :root {
   --green: rgb(6, 227, 3);
+  /* --green: #e74c3c; */
   --white: #f1f1f1;
   --back-color: #0e0e0e;
 }
@@ -195,4 +196,63 @@ img {
 .reverse {
   flex-direction: row-reverse;
   text-align: end;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.footer-container > div:first-child {
+  border-bottom: 3px solid var(--green);
+  width: fit-content;
+  padding-bottom: 10px;
+  margin-bottom: 40px;
+  font-size: 30px;
+  font-weight: 500;
+  color: #dfdfdf;
+}
+
+.text-center{
+	color:#fff;	
+	text-transform:uppercase;
+  font-size: 25px;
+  margin: -50px 0 80px 0;
+  display: block;
+  text-align: center;
+}
+.input-container{
+	position:relative;
+	margin-bottom:50px;
+}
+.input-container label{
+	position:absolute;
+	top:0px;
+	left:0px;
+	font-size:20px;
+	color:#a3a3a3;	
+	transition: all 0.5s ease-in-out;
+}
+.input-container input{ 
+  border:0;
+  border-bottom:1px solid #555;  
+  background:transparent;
+  width:100%;
+  padding:8px 0 5px 0;
+  font-size:25px;
+  color:#fff;
+}
+.input-container input:focus{ 
+  border:none;	
+  outline:none;
+  border-bottom:1px solid var(--green);	
+}
+
+.input-container input:focus ~ label,
+.input-container input:valid ~ label{
+	top:-12px;
+	font-size:16px;
+	
 }
