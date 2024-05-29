@@ -137,6 +137,7 @@ section {
 .project {
   padding-top: 300px;
 }
+
 .btn:hover {
   background: var(--green);
   color: var(--back-color);

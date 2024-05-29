@@ -554,6 +554,279 @@ video {
   --tw-contain-style:  ;
 }
 
+.m-0 {
+  margin: 0px;
+}
+
+.ml-\[20\%\] {
+  margin-left: 20%;
+}
+
+.mb-10 {
+  margin-bottom: 2.5rem;
+}
+
+.mb-12 {
+  margin-bottom: 3rem;
+}
+
+.mt-5 {
+  margin-top: 1.25rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.h-screen {
+  height: 100vh;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.w-\[80\%\] {
+  width: 80%;
+}
+
+.flex-1 {
+  flex: 1 1 0%;
+}
+
+.flex-\[0\] {
+  flex: 0;
+}
+
+.flex-\[2\.\] {
+  flex: 2.;
+}
+
+.flex-\[2\.5e\] {
+  flex: 2.5e;
+}
+
+.flex-\[2\.5em\] {
+  flex: 2.5em;
+}
+
+.flex-\[1em\] {
+  flex: 1em;
+}
+
+.flex-\[2em\] {
+  flex: 2em;
+}
+
+.flex-\[1\.4em\] {
+  flex: 1.4em;
+}
+
+.basis-10 {
+  flex-basis: 2.5rem;
+}
+
+.basis-\[20\%\] {
+  flex-basis: 20%;
+}
+
+.basis-\[0\%\] {
+  flex-basis: 0%;
+}
+
+.basis-\[50\%\] {
+  flex-basis: 50%;
+}
+
+.basis-\[40\%\] {
+  flex-basis: 40%;
+}
+
+.basis-\[44\%\] {
+  flex-basis: 44%;
+}
+
+.basis-\[41\%\] {
+  flex-basis: 41%;
+}
+
+.basis-\[4\%\] {
+  flex-basis: 4%;
+}
+
+.basis-\[30\%\] {
+  flex-basis: 30%;
+}
+
+.basis-\[32\%\] {
+  flex-basis: 32%;
+}
+
+.basis-\[35\%\] {
+  flex-basis: 35%;
+}
+
+.basis-\[34\%\] {
+  flex-basis: 34%;
+}
+
+.basis-3 {
+  flex-basis: 0.75rem;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.rounded-xl {
+  border-radius: 0.75rem;
+}
+
+.border-2 {
+  border-width: 2px;
+}
+
+.border-green-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(34 197 94 / var(--tw-border-opacity));
+}
+
+.border-primary {
+  --tw-border-opacity: 1;
+  border-color: rgb(6 227 3 / var(--tw-border-opacity));
+}
+
+.p-0 {
+  padding: 0px;
+}
+
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.px-\[20\%\] {
+  padding-left: 20%;
+  padding-right: 20%;
+}
+
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.text-start {
+  text-align: start;
+}
+
+.text-\[1\.5vw\] {
+  font-size: 1.5vw;
+}
+
+.text-\[5\.5vw\] {
+  font-size: 5.5vw;
+}
+
+.text-\[50px\] {
+  font-size: 50px;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.font-light {
+  font-weight: 300;
+}
+
+.tracking-wider {
+  letter-spacing: 0.05em;
+}
+
+.tracking-tight {
+  letter-spacing: -0.025em;
+}
+
+.tracking-widest {
+  letter-spacing: 0.1em;
+}
+
+.tracking-\[1\] {
+  letter-spacing: 1;
+}
+
+.tracking-\[1v\] {
+  letter-spacing: 1v;
+}
+
+.tracking-\[1rem\] {
+  letter-spacing: 1rem;
+}
+
+.tracking-\[5px\] {
+  letter-spacing: 5px;
+}
+
+.text-gray-400 {
+  --tw-text-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-text-opacity));
+}
+
+.text-primary {
+  --tw-text-opacity: 1;
+  color: rgb(6 227 3 / var(--tw-text-opacity));
+}
+
+.text-blue-500 {
+  --tw-text-opacity: 1;
+  color: rgb(59 130 246 / var(--tw-text-opacity));
+}
+
+.text-green-500 {
+  --tw-text-opacity: 1;
+  color: rgb(34 197 94 / var(--tw-text-opacity));
+}
+
+.no-underline {
+  text-decoration-line: none;
+}
+
+.transition-colors {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.duration-300 {
+  transition-duration: 300ms;
+}
+
+.ease-in-out {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 :root {
   --green: rgb(6, 227, 3);
   /* --green: #e74c3c; */
@@ -581,4 +854,24 @@ body {
   font-family: 'Montserrat', sans-serif;
   color: #f1f1f1;
   overflow-x: hidden;
+}
+
+.flip {
+  transform: rotateX(360deg);
+  transition: transform 0.8s;
+}
+
+.hover\:bg-green-500:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(34 197 94 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-primary:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(6 227 3 / var(--tw-bg-opacity));
+}
+
+.hover\:text-white:hover {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }

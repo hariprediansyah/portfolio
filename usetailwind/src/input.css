@@ -30,3 +30,8 @@
     color: #f1f1f1;
     overflow-x: hidden;
   }
+
+  .flip {
+    transform: rotateX(360deg);
+    transition: transform 0.8s;
+  }
