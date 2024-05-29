@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --green: rgb(6, 227, 3);
+  /* --green: #e74c3c; */
+  --white: #f1f1f1;
+  --back-color: #0e0e0e;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  @apply p-0;
+  @apply m-0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  overflow-x: hidden;
+}
+
+.flip {
+  transform: rotateX(360deg);
+  transition: transform 0.8s;
+}
+
+.input-container label {
+  transform: translateY(0);
+}
+
+.input-container input:focus ~ label,
+.input-container input:valid ~ label {
+  transform: translateY(-1.5rem);
+  font-size: 0.875rem; /* Tailwind's text-sm */
+}
+
+.left-item {
+  color: transparent;
+  background-image: linear-gradient(90deg, var(--green) 50%, white 50%);
+  background-position: 100%;
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  @apply tracking-widest mb-6 cursor-pointer;
+
+  transition: background-position 1s ease;
+}
+
+.left-item:hover {
+  background-position: 0;
+}
