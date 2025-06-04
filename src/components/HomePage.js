@@ -407,12 +407,6 @@ const HomePage = ({ isDark, language, toggleTheme, toggleLanguage }) => {
                   />
                 </div>
                 {/* Knob */}
-                <span
-                  className={`absolute w-7 h-7 bg-white dark:bg-gray-900 rounded-full shadow-md transition-transform duration-300
-          ${language === 'en' ? 'translate-x-0' : 'translate-x-8'}
-        `}
-                  style={{ left: 2, top: 2 }}
-                />
               </button>
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
