@@ -22,6 +22,7 @@ import {
   ArrowRight,
   BookOpen
 } from 'lucide-react'
+import { LoadImage } from './LoadImage'
 
 const HomePage = ({ isDark, language, toggleTheme, toggleLanguage }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -277,6 +278,8 @@ const HomePage = ({ isDark, language, toggleTheme, toggleLanguage }) => {
     { name: 'MongoDB', icon: Database, category: 'Database' }
   ]
 
+  const [imagesLoaded, setImagesLoaded] = useState(false)
+
   useEffect(() => {
     const handleScroll = () => {
       const sections = ['home', 'about', 'portfolio', 'services', 'contact']
@@ -296,9 +299,32 @@ const HomePage = ({ isDark, language, toggleTheme, toggleLanguage }) => {
       }
     }
 
+    const preloadImages = () => {
+      Promise.all(
+        projectImages.map(
+          (img) =>
+            new Promise((resolve) => {
+              const image = new Image()
+              image.src = img
+              image.onload = resolve
+            })
+        )
+      ).then(() => {})
+    }
+
+    preloadImages()
+
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  function LoadImages(url) {
+    return new Promise((resolve) => {
+      const image = new Image()
+      image.src = url
+      image.onload = resolve
+    })
+  }
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId)
@@ -581,20 +607,28 @@ const HomePage = ({ isDark, language, toggleTheme, toggleLanguage }) => {
             <p className='text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto'>{t.portfolio.subtitle}</p>
           </motion.div>
 
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12'>
-            {t.portfolio.projects.map((project, index) => (
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12 transition-colors'>
+            {t.portfolio.projects?.map((project, index) => (
               <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                viewport={{ once: true }}
+                key={project.id || index}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.1
+                }}
                 className='bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group'>
-                <div className='relative overflow-hidden'>
-                  <img
+                <div className='relative aspect-video bg-gray-200 dark:bg-gray-800 overflow-hidden transform-gpu'>
+                  {/* <img
                     src={projectImages[index]}
+                    loading='lazy'
                     alt={project.title}
-                    className='w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300'
+                    className='w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300'
+                  /> */}
+                  <LoadImage
+                    url={projectImages[index]}
+                    alt={project.title}
+                    className='rounded-t-xl' // Optional
                   />
                   <div className='absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300'></div>
                   <div className='absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
