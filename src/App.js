@@ -8,6 +8,7 @@ import BlogDetailPage from './components/BlogDetailPage'
 import NotFoundPage from './components/NotFoundPage'
 import LoadingSpinner from './components/LoadingSpinner'
 import './App.css'
+import { ToastContainer } from 'react-toastify'
 
 const App = () => {
   //App
@@ -96,6 +97,7 @@ const App = () => {
           }
         />
       </Routes>
+      <ToastContainer />
     </div>
   )
 }

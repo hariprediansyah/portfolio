@@ -23,11 +23,20 @@ import {
   BookOpen
 } from 'lucide-react'
 import { LoadImage } from './LoadImage'
+import axios from 'axios'
+import { toast } from 'react-toastify'
 
 const HomePage = ({ isDark, language, toggleTheme, toggleLanguage }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
   const navigate = useNavigate()
+
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  })
 
   // Language content dengan bahasa Indonesia yang lebih natural
   const content = {
@@ -335,6 +344,73 @@ const HomePage = ({ isDark, language, toggleTheme, toggleLanguage }) => {
   }
 
   const t = content[language]
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    //validasi
+    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+      toast.error('Please fill out all the fields', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined
+      })
+      return
+    }
+
+    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!regexEmail.test(formData.email)) {
+      toast.error('Invalid email format', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined
+      })
+      return
+    }
+    toast.promise(
+      new Promise((resolve, reject) => {
+        axios
+          .post('https://api.hariprediansyah.com/sendMessage', formData, {
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+          })
+          .then((res) => {
+            setFormData({
+              name: '',
+              email: '',
+              subject: '',
+              message: ''
+            })
+            resolve(res)
+          })
+          .catch((err) => {
+            reject(err)
+          })
+      }),
+      {
+        pending: 'Sending message...',
+        success: 'Message sent successfully!',
+        error: 'Failed to send message'
+      }
+    )
+    // toast.success('Message sent successfully!', {
+    //   position: 'top-right',
+    //   autoClose: 5000,
+    //   hideProgressBar: false,
+    //   closeOnClick: true,
+    //   pauseOnHover: true,
+    //   draggable: true,
+    //   progress: undefined
+    // })
+  }
 
   return (
     <div>
@@ -795,7 +871,7 @@ const HomePage = ({ isDark, language, toggleTheme, toggleLanguage }) => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}>
-              <form className='space-y-6 bg-white dark:bg-gray-900 p-8 rounded-xl shadow-lg'>
+              <form className='space-y-6 bg-white dark:bg-gray-900 p-8 rounded-xl shadow-lg' onSubmit={handleSubmit}>
                 <div className='grid grid-cols-1 sm:grid-cols-2 gap-6'>
                   <div>
                     <label className='block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2'>
@@ -804,6 +880,8 @@ const HomePage = ({ isDark, language, toggleTheme, toggleLanguage }) => {
                     <input
                       type='text'
                       className='w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all'
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder={t.contact.form.name}
                     />
                   </div>
@@ -814,6 +892,8 @@ const HomePage = ({ isDark, language, toggleTheme, toggleLanguage }) => {
                     <input
                       type='email'
                       className='w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all'
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder={t.contact.form.email}
                     />
                   </div>
@@ -826,6 +906,8 @@ const HomePage = ({ isDark, language, toggleTheme, toggleLanguage }) => {
                   <input
                     type='text'
                     className='w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all'
+                    value={formData.subject}
+                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                     placeholder={t.contact.form.subject}
                   />
                 </div>
@@ -837,6 +919,8 @@ const HomePage = ({ isDark, language, toggleTheme, toggleLanguage }) => {
                   <textarea
                     rows={6}
                     className='w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all'
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder={t.contact.form.message}></textarea>
                 </div>
 
