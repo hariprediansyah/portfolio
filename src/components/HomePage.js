@@ -26,7 +26,7 @@ import { LoadImage } from './LoadImage'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 
-const HomePage = ({ isDark, language, toggleTheme, toggleLanguage }) => {
+const HomePage = ({ language }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
   const navigate = useNavigate()
@@ -453,7 +453,7 @@ const HomePage = ({ isDark, language, toggleTheme, toggleLanguage }) => {
             </div>
 
             {/* Theme and Language Toggle */}
-            <div className='flex items-center space-x-4'>
+            {/* <div className='flex items-center space-x-4'>
               <button
                 onClick={toggleTheme}
                 className='p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors'>
@@ -463,9 +463,7 @@ const HomePage = ({ isDark, language, toggleTheme, toggleLanguage }) => {
                 onClick={toggleLanguage}
                 className=' h-8 flex items-center bg-gray-200 dark:bg-gray-700 rounded-lg p-1 transition-colors focus:outline-none'
                 title={language === 'en' ? 'Switch to Indonesian' : 'Switch to English'}>
-                {/* Track */}
                 <div className={`flex w-full h-full items-center px-1 transition-all duration-300 gap-2`}>
-                  {/* Bendera Inggris (kiri) */}
                   <img
                     src='/flags/uk.svg'
                     alt='UK Flag'
@@ -473,7 +471,6 @@ const HomePage = ({ isDark, language, toggleTheme, toggleLanguage }) => {
                       language === 'en' ? 'opacity-100' : 'opacity-30'
                     }`}
                   />
-                  {/* Bendera Indonesia (kanan) */}
                   <img
                     src='/flags/indonesia.svg'
                     alt='Indonesian Flag'
@@ -482,14 +479,13 @@ const HomePage = ({ isDark, language, toggleTheme, toggleLanguage }) => {
                     }`}
                   />
                 </div>
-                {/* Knob */}
               </button>
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className='md:hidden p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300'>
                 {isMenuOpen ? <X size={18} /> : <Menu size={18} />}
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
 

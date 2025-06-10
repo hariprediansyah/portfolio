@@ -12,7 +12,7 @@ import { ToastContainer } from 'react-toastify'
 
 const App = () => {
   //App
-  const [isDark, setIsDark] = useState(false)
+  const [isDark, setIsDark] = useState(true)
   const [language, setLanguage] = useState('en')
   const [isLoading, setIsLoading] = useState(true)
 
