@@ -268,7 +268,7 @@ const HomePage = ({ language }) => {
   }
 
   const projectImages = [
-    'https://images.unsplash.com/photo-1593720213428-28a5b9e94613',
+    'Banner.png',
     'https://images.pexels.com/photos/1092671/pexels-photo-1092671.jpeg',
     'https://images.unsplash.com/photo-1610563166150-b34df4f3bcd6',
     'https://images.unsplash.com/photo-1498050108023-c5249f4df085',
