@@ -543,36 +543,48 @@ const HomePage = ({ language }) => {
             <div className='flex flex-col sm:flex-row gap-4'>
               <button
                 onClick={() => scrollToSection('portfolio')}
-                className='px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all transform hover:scale-105 shadow-lg'>
+                className='relative px-8 py-4 text-white rounded-lg font-semibold transition-all duration-500 transform hover:scale-105 shadow-lg overflow-hidden z-10'
+                style={{
+                  backgroundImage: 'linear-gradient(120deg, #2563eb, #9333ea)',
+                  backgroundSize: '200% 200%',
+                  backgroundPosition: 'right center'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundPosition = 'left center'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundPosition = 'right center'
+                }}>
                 {t.hero.cta}
               </button>
+
               <button
                 onClick={() => scrollToSection('contact')}
-                className='px-8 py-4 border-2 border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-400 rounded-lg font-semibold hover:bg-blue-600 hover:text-white dark:hover:bg-blue-400 dark:hover:text-gray-900 transition-all'>
-                {t.hero.contact}
+                className='btn-hover-transition relative overflow-hidden border-2 hover:dark:text-white dark:border-blue-400 active:dark:border-blue-600 rounded-lg text-blue-400 font-semibold px-8 py-4'>
+                <p>{t.hero.contact}</p>
               </button>
             </div>
-            <div className='flex space-x-6 pt-4'>
+            <div className='icons-wrapper flex space-x-6 pt-4'>
               <a
                 href='https://github.com/hariprediansyah'
                 className='text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors'>
-                <Github size={24} />
+                <i className='fa-brands fa-github fa-xl'></i>
               </a>
               <a
                 href='https://www.linkedin.com/in/hari-prediansyah-8516411b4'
                 className='text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors'>
-                <Linkedin size={24} />
+                <i className='fa-brands fa-linkedin fa-xl'></i>
               </a>
               <a
                 href='https://instagram.com/hariiprd'
                 className='text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors'>
-                <Instagram size={24} />
+                <i className='fa-brands fa-instagram fa-xl'></i>
               </a>
               <button
                 onClick={() => navigate('/blog')}
                 className='text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors'
                 title='Blog'>
-                <BookOpen size={24} />
+                <i className='fa-solid fa-book-open fa-xl'></i>
               </button>
             </div>
           </motion.div>

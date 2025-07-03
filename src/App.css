@@ -26,7 +26,8 @@ html {
 
 /* Animation keyframes */
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px);
   }
   50% {
@@ -108,7 +109,8 @@ textarea:focus {
 
 /* Loading animation */
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {
@@ -138,7 +140,7 @@ textarea:focus {
   .hero-text {
     font-size: clamp(2rem, 8vw, 4rem);
   }
-  
+
   .hero-tagline {
     font-size: clamp(1rem, 4vw, 1.5rem);
   }
@@ -235,7 +237,7 @@ textarea:focus {
   .bg-gradient-to-r {
     background: #0066cc !important;
   }
-  
+
   .text-gradient {
     color: #0066cc !important;
     background: none !important;
@@ -259,7 +261,7 @@ textarea:focus {
   .no-print {
     display: none !important;
   }
-  
+
   body {
     font-size: 12pt;
     line-height: 1.4;
@@ -275,4 +277,40 @@ textarea:focus {
 ::-moz-selection {
   background-color: rgba(59, 130, 246, 0.3);
   color: inherit;
+}
+
+.icons-wrapper * {
+  transition: scale 300ms, filter 300ms;
+}
+
+.icons-wrapper:has(:hover) :not(:hover) {
+  scale: 0.8;
+  filter: blur(2px);
+}
+
+.btn-hover-transition::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 100%;
+  width: 200%;
+  height: 200%;
+  background-color: #60a5fa; /* blue-400 */
+  transition: top 0.7s, left 0.7s;
+  z-index: 0;
+  border-radius: 100px;
+}
+
+.btn-hover-transition:hover::before {
+  top: -30%;
+  left: -30%;
+}
+
+.btn-hover-transition > * {
+  position: relative;
+  z-index: 10;
+}
+
+.btn-hover-transition:active::before {
+  background-color: #3b82f6; /* blue-600 */
 }
