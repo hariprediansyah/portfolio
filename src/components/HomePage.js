@@ -454,23 +454,72 @@ const HomePage = () => {
       </nav>
 
       {/* Hero Section */}
-      <section
-        id='home'
-        className='pt-20 min-h-screen flex items-center bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800'>
-        <div className='max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center'>
+      <section id='home' className='pt-20 min-h-screen flex items-center relative overflow-hidden'>
+        {/* Animated Background */}
+        <div className='absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800'></div>
+
+        {/* Animated Gradient Mesh */}
+        <div className='absolute inset-0 bg-gradient-to-r from-blue-400/10 via-purple-400/10 to-pink-400/10 dark:from-blue-600/5 dark:via-purple-600/5 dark:to-pink-600/5 animate-pulse'></div>
+
+        {/* Floating Elements */}
+        <div className='absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-blue-400/15 to-purple-400/15 rounded-full blur-xl animate-float'></div>
+        <div
+          className='absolute top-40 right-20 w-24 h-24 bg-gradient-to-r from-purple-400/15 to-pink-400/15 rounded-full blur-xl animate-float'
+          style={{ animationDelay: '2s' }}></div>
+        <div
+          className='absolute bottom-40 left-1/4 w-20 h-20 bg-gradient-to-r from-blue-400/15 to-cyan-400/15 rounded-full blur-xl animate-float'
+          style={{ animationDelay: '4s' }}></div>
+        <div
+          className='absolute bottom-20 right-1/3 w-28 h-28 bg-gradient-to-r from-purple-400/15 to-blue-400/15 rounded-full blur-xl animate-float'
+          style={{ animationDelay: '1s' }}></div>
+
+        {/* Additional Floating Shapes */}
+        <div
+          className='absolute top-1/3 left-1/2 w-16 h-16 bg-gradient-to-r from-cyan-400/10 to-blue-400/10 rounded-lg blur-lg animate-float'
+          style={{ animationDelay: '3s' }}></div>
+        <div
+          className='absolute bottom-1/3 right-1/4 w-12 h-12 bg-gradient-to-r from-pink-400/10 to-purple-400/10 rounded-full blur-lg animate-float'
+          style={{ animationDelay: '5s' }}></div>
+
+        {/* Geometric Shapes */}
+        <div
+          className='absolute top-1/2 left-20 w-8 h-8 bg-gradient-to-r from-blue-400/20 to-purple-400/20 transform rotate-45 blur-sm animate-float'
+          style={{ animationDelay: '2.5s' }}></div>
+        <div
+          className='absolute bottom-1/3 left-1/3 w-6 h-6 bg-gradient-to-r from-purple-400/20 to-pink-400/20 transform rotate-45 blur-sm animate-float'
+          style={{ animationDelay: '1.5s' }}></div>
+
+        {/* Geometric Pattern */}
+        <div className='absolute inset-0 opacity-3 dark:opacity-5'>
+          <div
+            className='absolute top-0 left-0 w-full h-full'
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233b82f6' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+              backgroundSize: '60px 60px'
+            }}></div>
+        </div>
+
+        {/* Animated Lines */}
+        <div className='absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-400/30 to-transparent animate-pulse'></div>
+        <div
+          className='absolute bottom-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-400/30 to-transparent animate-pulse'
+          style={{ animationDelay: '1s' }}></div>
+        <div className='max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10'>
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             className='space-y-10'>
-            <h1 className='text-6xl lg:text-7xl font-extrabold text-gray-900 dark:text-white'>Hari Prediansyah</h1>
-            <p className='text-2xl lg:text-3xl text-blue-600 dark:text-blue-400 font-semibold'>
+            <h1 className='text-6xl lg:text-7xl font-extrabold text-gray-900 dark:text-white relative z-20'>
+              Hari Prediansyah
+            </h1>
+            <p className='text-2xl lg:text-3xl text-blue-600 dark:text-blue-400 font-semibold relative z-20'>
               Just a dev trying not to break production.
             </p>
-            <p className='text-xl text-gray-600 dark:text-gray-300 max-w-xl'>
+            <p className='text-xl text-gray-600 dark:text-gray-300 max-w-xl relative z-20'>
               Fullstack Developer specializing in modern web, mobile, and desktop applications
             </p>
-            <div className='flex flex-col sm:flex-row gap-6'>
+            <div className='flex flex-col sm:flex-row gap-6 relative z-20'>
               <button
                 ref={viewWorkBtnRef}
                 onMouseEnter={(e) => {
@@ -483,35 +532,36 @@ const HomePage = () => {
                   e.currentTarget.style.backgroundPosition = 'right center'
                 }}
                 onClick={() => scrollToSection('portfolio')}
-                className='relative px-12 py-5 text-2xl text-white rounded-xl font-bold transition-all duration-500 transform hover:scale-110 shadow-2xl overflow-hidden z-10'
+                className='relative px-12 py-5 text-2xl text-white rounded-xl font-bold transition-all duration-500 transform hover:scale-110 shadow-2xl overflow-hidden z-10 hover:shadow-blue-500/25 dark:hover:shadow-purple-500/25'
                 style={{
                   backgroundImage: 'linear-gradient(120deg, #2563eb, #9333ea)',
                   backgroundSize: '200% 200%',
                   backgroundPosition: 'right center'
                 }}>
-                View My Work
+                <div className='absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300'></div>
+                <span className='relative z-10'>View My Work</span>
               </button>
 
               <button
                 onClick={() => scrollToSection('contact')}
-                className='btn-hover-transition relative text-blue-400 overflow-hidden border-2 hover:dark:text-white dark:border-blue-400 active:dark:border-blue-600 rounded-xl text-2xl font-bold px-12 py-5'>
+                className='btn-hover-transition relative text-blue-400 overflow-hidden border-2 hover:dark:text-white dark:border-blue-400 active:dark:border-blue-600 rounded-xl text-2xl font-bold px-12 py-5 hover:shadow-lg hover:shadow-blue-500/20 dark:hover:shadow-purple-500/20 transition-all duration-300'>
                 <p>Get In Touch</p>
               </button>
             </div>
-            <div className='icons-wrapper flex space-x-8 pt-6'>
+            <div className='icons-wrapper flex space-x-8 pt-6 relative z-20'>
               <a
                 href='https://github.com/hariprediansyah'
-                className='text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors'>
+                className='text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 hover:scale-110 hover:drop-shadow-lg'>
                 <i className='fa-brands fa-github fa-xl'></i>
               </a>
               <a
                 href='https://www.linkedin.com/in/hari-prediansyah-8516411b4'
-                className='text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors'>
+                className='text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 hover:scale-110 hover:drop-shadow-lg'>
                 <i className='fa-brands fa-linkedin fa-xl'></i>
               </a>
               <a
                 href='https://instagram.com/hariiprd'
-                className='text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors'>
+                className='text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 hover:scale-110 hover:drop-shadow-lg'>
                 <i className='fa-brands fa-instagram fa-xl'></i>
               </a>
               {/* <button
@@ -527,13 +577,27 @@ const HomePage = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className='relative'>
+            className='relative z-20'>
             <div className='relative w-96 h-96 mx-auto'>
-              <div className='absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur-2xl opacity-30'></div>
+              {/* Enhanced Glow Effect */}
+              <div className='absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur-2xl opacity-30 animate-pulse-glow'></div>
+              <div
+                className='absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full blur-xl opacity-20 animate-pulse-glow'
+                style={{ animationDelay: '1.5s' }}></div>
+
+              {/* Floating Elements around profile */}
+              <div className='absolute -top-4 -right-4 w-8 h-8 bg-blue-400/50 rounded-full animate-float'></div>
+              <div
+                className='absolute -bottom-4 -left-4 w-6 h-6 bg-purple-400/50 rounded-full animate-float'
+                style={{ animationDelay: '2s' }}></div>
+              <div
+                className='absolute top-1/2 -left-8 w-4 h-4 bg-pink-400/50 rounded-full animate-float'
+                style={{ animationDelay: '3s' }}></div>
+
               <img
                 src='profile.jpg'
                 alt='Hari Prediansyah'
-                className='relative w-full h-full object-cover rounded-full border-8 border-white dark:border-gray-800 shadow-2xl'
+                className='relative w-full h-full object-cover rounded-full border-8 border-white dark:border-gray-800 shadow-2xl hover:scale-105 transition-transform duration-500'
               />
             </div>
           </motion.div>
