@@ -1,30 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { useNavigate, useParams } from 'react-router-dom';
-import { 
-  ArrowLeft, 
-  Sun,
-  Moon,
-  Calendar,
-  Clock,
-  Tag,
-  User,
-  Share2,
-  BookOpen,
-  ThumbsUp
-} from 'lucide-react';
+import React, { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
+import { useNavigate, useParams } from 'react-router-dom'
+import { ArrowLeft, Sun, Moon, Calendar, Clock, Tag, User, Share2, BookOpen, ThumbsUp } from 'lucide-react'
 
-const BlogDetailPage = ({ isDark, language, toggleTheme, toggleLanguage }) => {
-  const { id } = useParams();
-  const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(true);
+const BlogDetailPage = ({ isDark, toggleTheme }) => {
+  const { id } = useParams()
+  const navigate = useNavigate()
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 800);
-    return () => clearTimeout(timer);
-  }, []);
+      setIsLoading(false)
+    }, 800)
+    return () => clearTimeout(timer)
+  }, [])
 
   const content = {
     en: {
@@ -38,7 +27,8 @@ const BlogDetailPage = ({ isDark, language, toggleTheme, toggleLanguage }) => {
       articles: {
         'react-hooks-guide': {
           title: 'Mastering React Hooks: A Complete Guide',
-          excerpt: 'Deep dive into React Hooks and learn how to build more efficient and maintainable components with useState, useEffect, and custom hooks.',
+          excerpt:
+            'Deep dive into React Hooks and learn how to build more efficient and maintainable components with useState, useEffect, and custom hooks.',
           category: 'react',
           readTime: 8,
           date: '2024-03-15',
@@ -85,7 +75,8 @@ function Counter() {
         },
         'flutter-performance': {
           title: 'Flutter Performance Optimization Tips',
-          excerpt: 'Learn essential techniques to optimize your Flutter apps for better performance and smoother user experience.',
+          excerpt:
+            'Learn essential techniques to optimize your Flutter apps for better performance and smoother user experience.',
           category: 'flutter',
           readTime: 6,
           date: '2024-03-10',
@@ -129,7 +120,8 @@ function Counter() {
       articles: {
         'react-hooks-guide': {
           title: 'Menguasai React Hooks: Panduan Lengkap',
-          excerpt: 'Pelajari React Hooks secara mendalam dan cara membangun komponen yang lebih efisien dan mudah dipelihara dengan useState, useEffect, dan custom hooks.',
+          excerpt:
+            'Pelajari React Hooks secara mendalam dan cara membangun komponen yang lebih efisien dan mudah dipelihara dengan useState, useEffect, dan custom hooks.',
           category: 'react',
           readTime: 8,
           date: '2024-03-15',
@@ -176,7 +168,8 @@ function Counter() {
         },
         'flutter-performance': {
           title: 'Tips Optimasi Performa Flutter',
-          excerpt: 'Pelajari teknik penting untuk mengoptimalkan aplikasi Flutter agar performa lebih baik dan pengalaman pengguna lebih lancar.',
+          excerpt:
+            'Pelajari teknik penting untuk mengoptimalkan aplikasi Flutter agar performa lebih baik dan pengalaman pengguna lebih lancar.',
           category: 'flutter',
           readTime: 6,
           date: '2024-03-10',
@@ -209,78 +202,67 @@ function Counter() {
         }
       }
     }
-  };
+  }
 
   const blogImages = [
     'https://images.unsplash.com/photo-1516321318423-f06f85e504b3',
     'https://images.unsplash.com/photo-1555066931-4365d14bab8c'
-  ];
+  ]
 
-  const t = content[language];
-  const article = t.articles[id];
+  const t = content['en']
+  const article = t.articles[id]
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="animate-pulse">
-            <div className="h-8 bg-gray-300 dark:bg-gray-600 rounded w-48 mb-8"></div>
-            <div className="h-64 bg-gray-300 dark:bg-gray-600 rounded-xl mb-8"></div>
-            <div className="space-y-4">
-              <div className="h-6 bg-gray-300 dark:bg-gray-600 rounded w-3/4"></div>
-              <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded w-full"></div>
-              <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded w-5/6"></div>
+      <div className='min-h-screen bg-gray-50 dark:bg-gray-900'>
+        <div className='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
+          <div className='animate-pulse'>
+            <div className='h-8 bg-gray-300 dark:bg-gray-600 rounded w-48 mb-8'></div>
+            <div className='h-64 bg-gray-300 dark:bg-gray-600 rounded-xl mb-8'></div>
+            <div className='space-y-4'>
+              <div className='h-6 bg-gray-300 dark:bg-gray-600 rounded w-3/4'></div>
+              <div className='h-4 bg-gray-300 dark:bg-gray-600 rounded w-full'></div>
+              <div className='h-4 bg-gray-300 dark:bg-gray-600 rounded w-5/6'></div>
             </div>
           </div>
         </div>
       </div>
-    );
+    )
   }
 
   if (!article) {
     return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-            Article Not Found
-          </h1>
+      <div className='min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center'>
+        <div className='text-center'>
+          <h1 className='text-2xl font-bold text-gray-900 dark:text-white mb-4'>Article Not Found</h1>
           <button
             onClick={() => navigate('/blog')}
-            className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300"
-          >
+            className='text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300'>
             Back to Blog
           </button>
         </div>
       </div>
-    );
+    )
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className='min-h-screen bg-gray-50 dark:bg-gray-900'>
       {/* Header */}
-      <header className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex items-center justify-between">
+      <header className='bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700'>
+        <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6'>
+          <div className='flex items-center justify-between'>
             <button
               onClick={() => navigate('/blog')}
-              className="inline-flex items-center px-4 py-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
-            >
-              <ArrowLeft className="w-5 h-5 mr-2" />
+              className='inline-flex items-center px-4 py-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors'>
+              <ArrowLeft className='w-5 h-5 mr-2' />
               {t.backToBlog}
             </button>
-            
-            <div className="flex items-center space-x-4">
+
+            <div className='flex items-center space-x-4'>
               <button
                 onClick={toggleTheme}
-                className="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-              >
+                className='p-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors'>
                 {isDark ? <Sun size={18} /> : <Moon size={18} />}
-              </button>
-              <button
-                onClick={toggleLanguage}
-                className="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-              >
-                <span className="text-lg">{language === 'en' ? '🇮🇩' : '🇬🇧'}</span>
               </button>
             </div>
           </div>
@@ -288,54 +270,47 @@ function Counter() {
       </header>
 
       {/* Article Content */}
-      <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <article className='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
         {/* Hero Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="mb-8"
-        >
-          <div className="relative rounded-xl overflow-hidden h-64 sm:h-80 mb-8">
-            <img
-              src={blogImages[0]}
-              alt={article.title}
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-            <div className="absolute bottom-6 left-6 right-6">
-              <span className="inline-block px-3 py-1 bg-blue-600 text-white text-sm font-semibold rounded-full mb-4">
+          className='mb-8'>
+          <div className='relative rounded-xl overflow-hidden h-64 sm:h-80 mb-8'>
+            <img src={blogImages[0]} alt={article.title} className='w-full h-full object-cover' />
+            <div className='absolute inset-0 bg-gradient-to-t from-black/60 to-transparent'></div>
+            <div className='absolute bottom-6 left-6 right-6'>
+              <span className='inline-block px-3 py-1 bg-blue-600 text-white text-sm font-semibold rounded-full mb-4'>
                 {article.category.toUpperCase()}
               </span>
-              <h1 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-                {article.title}
-              </h1>
+              <h1 className='text-3xl sm:text-4xl font-bold text-white mb-4'>{article.title}</h1>
             </div>
           </div>
 
           {/* Article Meta */}
-          <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
-            <div className="flex items-center space-x-6 text-gray-600 dark:text-gray-400">
-              <div className="flex items-center">
-                <User size={16} className="mr-2" />
+          <div className='flex flex-wrap items-center justify-between gap-4 mb-8'>
+            <div className='flex items-center space-x-6 text-gray-600 dark:text-gray-400'>
+              <div className='flex items-center'>
+                <User size={16} className='mr-2' />
                 {article.author}
               </div>
-              <div className="flex items-center">
-                <Calendar size={16} className="mr-2" />
+              <div className='flex items-center'>
+                <Calendar size={16} className='mr-2' />
                 {new Date(article.date).toLocaleDateString()}
               </div>
-              <div className="flex items-center">
-                <Clock size={16} className="mr-2" />
+              <div className='flex items-center'>
+                <Clock size={16} className='mr-2' />
                 {article.readTime} {t.readTime}
               </div>
             </div>
-            
-            <div className="flex items-center space-x-3">
-              <button className="flex items-center space-x-2 px-4 py-2 bg-blue-100 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 rounded-lg hover:bg-blue-200 dark:hover:bg-blue-900/40 transition-colors">
+
+            <div className='flex items-center space-x-3'>
+              <button className='flex items-center space-x-2 px-4 py-2 bg-blue-100 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 rounded-lg hover:bg-blue-200 dark:hover:bg-blue-900/40 transition-colors'>
                 <ThumbsUp size={16} />
                 <span>{t.like}</span>
               </button>
-              <button className="flex items-center space-x-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+              <button className='flex items-center space-x-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors'>
                 <Share2 size={16} />
                 <span>{t.share}</span>
               </button>
@@ -343,13 +318,12 @@ function Counter() {
           </div>
 
           {/* Tags */}
-          <div className="flex flex-wrap gap-2 mb-8">
+          <div className='flex flex-wrap gap-2 mb-8'>
             {article.tags.map((tag, index) => (
               <span
                 key={index}
-                className="inline-flex items-center px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-sm rounded-full"
-              >
-                <Tag size={12} className="mr-1" />
+                className='inline-flex items-center px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-sm rounded-full'>
+                <Tag size={12} className='mr-1' />
                 {tag}
               </span>
             ))}
@@ -361,12 +335,8 @@ function Counter() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="prose prose-lg dark:prose-invert max-w-none"
-        >
-          <div 
-            className="article-content"
-            dangerouslySetInnerHTML={{ __html: article.content }}
-          />
+          className='prose prose-lg dark:prose-invert max-w-none'>
+          <div className='article-content' dangerouslySetInnerHTML={{ __html: article.content }} />
         </motion.div>
 
         {/* Article Actions */}
@@ -374,24 +344,22 @@ function Counter() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="border-t border-gray-200 dark:border-gray-700 pt-8 mt-12"
-        >
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <button className="flex items-center space-x-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+          className='border-t border-gray-200 dark:border-gray-700 pt-8 mt-12'>
+          <div className='flex items-center justify-between'>
+            <div className='flex items-center space-x-4'>
+              <button className='flex items-center space-x-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors'>
                 <ThumbsUp size={18} />
                 <span>{t.like}</span>
               </button>
-              <button className="flex items-center space-x-2 px-6 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+              <button className='flex items-center space-x-2 px-6 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors'>
                 <Share2 size={18} />
                 <span>{t.share}</span>
               </button>
             </div>
-            
+
             <button
               onClick={() => navigate('/blog')}
-              className="flex items-center space-x-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
-            >
+              className='flex items-center space-x-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors'>
               <BookOpen size={18} />
               <span>More Articles</span>
             </button>
@@ -399,7 +367,7 @@ function Counter() {
         </motion.div>
       </article>
     </div>
-  );
-};
+  )
+}
 
-export default BlogDetailPage;
+export default BlogDetailPage

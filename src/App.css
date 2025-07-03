@@ -314,3 +314,46 @@ textarea:focus {
 .btn-hover-transition:active::before {
   background-color: #3b82f6; /* blue-600 */
 }
+
+body,
+html {
+  cursor: none;
+}
+
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgb(255, 255, 255);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.08s linear, opacity 0.2s;
+}
+
+.hand {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  display: grid;
+  place-content: center;
+  z-index: 10000;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0) rotate(45deg);
+  transition: opacity 0.2s, transform 0.3s, left 0.1s, top 0.1s;
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+}
+.hand svg {
+  width: 40px;
+  height: 40px;
+  display: block;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}

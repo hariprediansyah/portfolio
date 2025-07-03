@@ -13,16 +13,11 @@ import { ToastContainer } from 'react-toastify'
 const App = () => {
   //App
   const [isDark, setIsDark] = useState(true)
-  const [language, setLanguage] = useState('en')
   const [isLoading, setIsLoading] = useState(true)
 
   const toggleTheme = () => {
     setIsDark(!isDark)
     document.documentElement.classList.toggle('dark')
-  }
-
-  const toggleLanguage = () => {
-    setLanguage(language === 'en' ? 'id' : 'en')
   }
 
   // Simulate initial loading
@@ -40,62 +35,12 @@ const App = () => {
   return (
     <div className={`min-h-screen transition-colors duration-300 ${isDark ? 'dark' : ''}`}>
       <Routes>
-        <Route
-          path='/'
-          element={
-            <HomePage isDark={isDark} language={language} toggleTheme={toggleTheme} toggleLanguage={toggleLanguage} />
-          }
-        />
-        <Route
-          path='/projects'
-          element={
-            <AllProjectsPage
-              isDark={isDark}
-              language={language}
-              toggleTheme={toggleTheme}
-              toggleLanguage={toggleLanguage}
-            />
-          }
-        />
-        <Route
-          path='/project/:id'
-          element={
-            <ProjectDetailPage
-              isDark={isDark}
-              language={language}
-              toggleTheme={toggleTheme}
-              toggleLanguage={toggleLanguage}
-            />
-          }
-        />
-        <Route
-          path='/blog'
-          element={
-            <BlogPage isDark={isDark} language={language} toggleTheme={toggleTheme} toggleLanguage={toggleLanguage} />
-          }
-        />
-        <Route
-          path='/blog/:id'
-          element={
-            <BlogDetailPage
-              isDark={isDark}
-              language={language}
-              toggleTheme={toggleTheme}
-              toggleLanguage={toggleLanguage}
-            />
-          }
-        />
-        <Route
-          path='*'
-          element={
-            <NotFoundPage
-              isDark={isDark}
-              language={language}
-              toggleTheme={toggleTheme}
-              toggleLanguage={toggleLanguage}
-            />
-          }
-        />
+        <Route path='/' element={<HomePage isDark={isDark} toggleTheme={toggleTheme} />} />
+        <Route path='/projects' element={<AllProjectsPage isDark={isDark} toggleTheme={toggleTheme} />} />
+        <Route path='/project/:id' element={<ProjectDetailPage isDark={isDark} toggleTheme={toggleTheme} />} />
+        <Route path='/blog' element={<BlogPage isDark={isDark} toggleTheme={toggleTheme} />} />
+        <Route path='/blog/:id' element={<BlogDetailPage isDark={isDark} toggleTheme={toggleTheme} />} />
+        <Route path='*' element={<NotFoundPage isDark={isDark} toggleTheme={toggleTheme} />} />
       </Routes>
       <ToastContainer />
     </div>

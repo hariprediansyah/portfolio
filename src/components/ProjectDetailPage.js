@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { useNavigate, useParams } from 'react-router-dom';
-import { 
-  ArrowLeft, 
+import React, { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
+import { useNavigate, useParams } from 'react-router-dom'
+import {
+  ArrowLeft,
   Sun,
   Moon,
   ExternalLink,
@@ -17,20 +17,20 @@ import {
   Play,
   Image as ImageIcon,
   CheckCircle
-} from 'lucide-react';
+} from 'lucide-react'
 
-const ProjectDetailPage = ({ isDark, language, toggleTheme, toggleLanguage }) => {
-  const { id } = useParams();
-  const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(true);
-  const [selectedImage, setSelectedImage] = useState(0);
+const ProjectDetailPage = ({ isDark, toggleTheme }) => {
+  const { id } = useParams()
+  const navigate = useNavigate()
+  const [isLoading, setIsLoading] = useState(true)
+  const [selectedImage, setSelectedImage] = useState(0)
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 800);
-    return () => clearTimeout(timer);
-  }, []);
+      setIsLoading(false)
+    }, 800)
+    return () => clearTimeout(timer)
+  }, [])
 
   const content = {
     en: {
@@ -51,7 +51,8 @@ const ProjectDetailPage = ({ isDark, language, toggleTheme, toggleLanguage }) =>
         'ecommerce-platform': {
           title: 'E-Commerce Platform',
           shortDescription: 'Modern e-commerce solution with React and Laravel backend',
-          description: 'A comprehensive e-commerce platform built with modern technologies, featuring a responsive React frontend and a robust Laravel backend. The platform includes user authentication, product management, shopping cart functionality, payment integration with Stripe, order management, and an admin dashboard for managing the entire system.',
+          description:
+            'A comprehensive e-commerce platform built with modern technologies, featuring a responsive React frontend and a robust Laravel backend. The platform includes user authentication, product management, shopping cart functionality, payment integration with Stripe, order management, and an admin dashboard for managing the entire system.',
           category: 'Web Development',
           type: 'Full Stack Web Application',
           status: 'completed',
@@ -75,7 +76,8 @@ const ProjectDetailPage = ({ isDark, language, toggleTheme, toggleLanguage }) =>
         'banking-app': {
           title: 'Mobile Banking App',
           shortDescription: 'Secure banking application built with Flutter',
-          description: 'A comprehensive mobile banking application developed with Flutter, featuring biometric authentication, real-time transaction processing, and a modern user interface. The app includes account management, fund transfers, bill payments, transaction history, and push notifications for enhanced user experience.',
+          description:
+            'A comprehensive mobile banking application developed with Flutter, featuring biometric authentication, real-time transaction processing, and a modern user interface. The app includes account management, fund transfers, bill payments, transaction history, and push notifications for enhanced user experience.',
           category: 'Mobile Development',
           type: 'Mobile Application',
           status: 'completed',
@@ -115,7 +117,8 @@ const ProjectDetailPage = ({ isDark, language, toggleTheme, toggleLanguage }) =>
         'ecommerce-platform': {
           title: 'Platform E-Commerce',
           shortDescription: 'Solusi e-commerce modern dengan React dan backend Laravel',
-          description: 'Platform e-commerce komprehensif yang dibangun dengan teknologi modern, menampilkan frontend React yang responsif dan backend Laravel yang kuat. Platform ini mencakup autentikasi pengguna, manajemen produk, fungsionalitas keranjang belanja, integrasi pembayaran dengan Stripe, manajemen pesanan, dan dashboard admin untuk mengelola seluruh sistem.',
+          description:
+            'Platform e-commerce komprehensif yang dibangun dengan teknologi modern, menampilkan frontend React yang responsif dan backend Laravel yang kuat. Platform ini mencakup autentikasi pengguna, manajemen produk, fungsionalitas keranjang belanja, integrasi pembayaran dengan Stripe, manajemen pesanan, dan dashboard admin untuk mengelola seluruh sistem.',
           category: 'Pengembangan Web',
           type: 'Aplikasi Web Full Stack',
           status: 'completed',
@@ -139,7 +142,8 @@ const ProjectDetailPage = ({ isDark, language, toggleTheme, toggleLanguage }) =>
         'banking-app': {
           title: 'Aplikasi Mobile Banking',
           shortDescription: 'Aplikasi perbankan yang aman dibangun dengan Flutter',
-          description: 'Aplikasi mobile banking komprehensif yang dikembangkan dengan Flutter, menampilkan autentikasi biometrik, pemrosesan transaksi real-time, dan antarmuka pengguna modern. Aplikasi ini mencakup manajemen akun, transfer dana, pembayaran tagihan, riwayat transaksi, dan notifikasi push untuk pengalaman pengguna yang ditingkatkan.',
+          description:
+            'Aplikasi mobile banking komprehensif yang dikembangkan dengan Flutter, menampilkan autentikasi biometrik, pemrosesan transaksi real-time, dan antarmuka pengguna modern. Aplikasi ini mencakup manajemen akun, transfer dana, pembayaran tagihan, riwayat transaksi, dan notifikasi push untuk pengalaman pengguna yang ditingkatkan.',
           category: 'Pengembangan Mobile',
           type: 'Aplikasi Mobile',
           status: 'completed',
@@ -161,7 +165,7 @@ const ProjectDetailPage = ({ isDark, language, toggleTheme, toggleLanguage }) =>
         }
       }
     }
-  };
+  }
 
   const projectImages = {
     'ecommerce-platform': [
@@ -176,145 +180,123 @@ const ProjectDetailPage = ({ isDark, language, toggleTheme, toggleLanguage }) =>
       'https://images.unsplash.com/photo-1551288049-bebda4e38f71',
       'https://images.unsplash.com/photo-1563986768609-322da13575f3'
     ]
-  };
+  }
 
   const techIcons = {
-    'React': Code,
-    'Laravel': Server,
-    'Flutter': Smartphone,
-    'MySQL': Database,
-    'PostgreSQL': Database,
+    React: Code,
+    Laravel: Server,
+    Flutter: Smartphone,
+    MySQL: Database,
+    PostgreSQL: Database,
     'Tailwind CSS': Palette,
     '.NET': Monitor,
     'Node.js': Server,
-    'MongoDB': Database
-  };
+    MongoDB: Database
+  }
 
-  const t = content[language];
-  const project = t.projects[id];
-  const images = projectImages[id] || [];
+  const t = content['en']
+  const project = t.projects[id]
+  const images = projectImages[id] || []
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="animate-pulse">
-            <div className="h-8 bg-gray-300 dark:bg-gray-600 rounded w-48 mb-8"></div>
-            <div className="h-96 bg-gray-300 dark:bg-gray-600 rounded-xl mb-8"></div>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              <div className="lg:col-span-2 space-y-4">
-                <div className="h-6 bg-gray-300 dark:bg-gray-600 rounded w-3/4"></div>
-                <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded w-full"></div>
-                <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded w-5/6"></div>
+      <div className='min-h-screen bg-gray-50 dark:bg-gray-900'>
+        <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
+          <div className='animate-pulse'>
+            <div className='h-8 bg-gray-300 dark:bg-gray-600 rounded w-48 mb-8'></div>
+            <div className='h-96 bg-gray-300 dark:bg-gray-600 rounded-xl mb-8'></div>
+            <div className='grid grid-cols-1 lg:grid-cols-3 gap-8'>
+              <div className='lg:col-span-2 space-y-4'>
+                <div className='h-6 bg-gray-300 dark:bg-gray-600 rounded w-3/4'></div>
+                <div className='h-4 bg-gray-300 dark:bg-gray-600 rounded w-full'></div>
+                <div className='h-4 bg-gray-300 dark:bg-gray-600 rounded w-5/6'></div>
               </div>
-              <div className="space-y-4">
-                <div className="h-6 bg-gray-300 dark:bg-gray-600 rounded w-1/2"></div>
-                <div className="h-32 bg-gray-300 dark:bg-gray-600 rounded"></div>
+              <div className='space-y-4'>
+                <div className='h-6 bg-gray-300 dark:bg-gray-600 rounded w-1/2'></div>
+                <div className='h-32 bg-gray-300 dark:bg-gray-600 rounded'></div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    );
+    )
   }
 
   if (!project) {
     return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-            Project Not Found
-          </h1>
+      <div className='min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center'>
+        <div className='text-center'>
+          <h1 className='text-2xl font-bold text-gray-900 dark:text-white mb-4'>Project Not Found</h1>
           <button
             onClick={() => navigate('/projects')}
-            className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300"
-          >
+            className='text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300'>
             Back to Projects
           </button>
         </div>
       </div>
-    );
+    )
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className='min-h-screen bg-gray-50 dark:bg-gray-900'>
       {/* Header */}
-      <header className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex items-center justify-between">
+      <header className='bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700'>
+        <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6'>
+          <div className='flex items-center justify-between'>
             <button
               onClick={() => navigate('/projects')}
-              className="inline-flex items-center px-4 py-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
-            >
-              <ArrowLeft className="w-5 h-5 mr-2" />
+              className='inline-flex items-center px-4 py-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors'>
+              <ArrowLeft className='w-5 h-5 mr-2' />
               {t.backToProjects}
             </button>
-            
-            <div className="flex items-center space-x-4">
+
+            <div className='flex items-center space-x-4'>
               <button
                 onClick={toggleTheme}
-                className="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-              >
+                className='p-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors'>
                 {isDark ? <Sun size={18} /> : <Moon size={18} />}
-              </button>
-              <button
-                onClick={toggleLanguage}
-                className="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-              >
-                <span className="text-lg">{language === 'en' ? '🇮🇩' : '🇬🇧'}</span>
               </button>
             </div>
           </div>
         </div>
       </header>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
         {/* Project Hero */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="mb-12"
-        >
-          <div className="relative rounded-xl overflow-hidden h-96 mb-8">
-            <img
-              src={images[selectedImage] || images[0]}
-              alt={project.title}
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-            <div className="absolute bottom-6 left-6 right-6">
-              <div className="flex items-center justify-between">
+          className='mb-12'>
+          <div className='relative rounded-xl overflow-hidden h-96 mb-8'>
+            <img src={images[selectedImage] || images[0]} alt={project.title} className='w-full h-full object-cover' />
+            <div className='absolute inset-0 bg-gradient-to-t from-black/60 to-transparent'></div>
+            <div className='absolute bottom-6 left-6 right-6'>
+              <div className='flex items-center justify-between'>
                 <div>
-                  <span className="inline-block px-3 py-1 bg-blue-600 text-white text-sm font-semibold rounded-full mb-4">
+                  <span className='inline-block px-3 py-1 bg-blue-600 text-white text-sm font-semibold rounded-full mb-4'>
                     {project.category}
                   </span>
-                  <h1 className="text-4xl font-bold text-white mb-2">
-                    {project.title}
-                  </h1>
-                  <p className="text-xl text-gray-200">
-                    {project.shortDescription}
-                  </p>
+                  <h1 className='text-4xl font-bold text-white mb-2'>{project.title}</h1>
+                  <p className='text-xl text-gray-200'>{project.shortDescription}</p>
                 </div>
-                <div className="flex space-x-3">
+                <div className='flex space-x-3'>
                   {project.live && (
                     <a
                       href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-                    >
-                      <Play size={18} className="mr-2" />
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      className='inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors'>
+                      <Play size={18} className='mr-2' />
                       {t.liveDemo}
                     </a>
                   )}
                   <a
                     href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center px-6 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors"
-                  >
-                    <Github size={18} className="mr-2" />
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='inline-flex items-center px-6 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors'>
+                    <Github size={18} className='mr-2' />
                     {t.sourceCode}
                   </a>
                 </div>
@@ -324,7 +306,7 @@ const ProjectDetailPage = ({ isDark, language, toggleTheme, toggleLanguage }) =>
 
           {/* Image Gallery Thumbnails */}
           {images.length > 1 && (
-            <div className="flex space-x-4 mb-8">
+            <div className='flex space-x-4 mb-8'>
               {images.map((image, index) => (
                 <button
                   key={index}
@@ -333,53 +315,39 @@ const ProjectDetailPage = ({ isDark, language, toggleTheme, toggleLanguage }) =>
                     selectedImage === index
                       ? 'border-blue-600 scale-110'
                       : 'border-gray-300 dark:border-gray-600 hover:border-blue-400'
-                  }`}
-                >
-                  <img
-                    src={image}
-                    alt={`${project.title} ${index + 1}`}
-                    className="w-full h-full object-cover"
-                  />
+                  }`}>
+                  <img src={image} alt={`${project.title} ${index + 1}`} className='w-full h-full object-cover' />
                 </button>
               ))}
             </div>
           )}
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div className='grid grid-cols-1 lg:grid-cols-3 gap-12'>
           {/* Main Content */}
-          <div className="lg:col-span-2 space-y-8">
+          <div className='lg:col-span-2 space-y-8'>
             {/* Project Description */}
             <motion.section
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                {t.description}
-              </h2>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-lg">
-                {project.description}
-              </p>
+              transition={{ duration: 0.8, delay: 0.2 }}>
+              <h2 className='text-2xl font-bold text-gray-900 dark:text-white mb-4'>{t.description}</h2>
+              <p className='text-gray-600 dark:text-gray-300 leading-relaxed text-lg'>{project.description}</p>
             </motion.section>
 
             {/* Key Features */}
             <motion.section
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                {t.features}
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              transition={{ duration: 0.8, delay: 0.4 }}>
+              <h2 className='text-2xl font-bold text-gray-900 dark:text-white mb-6'>{t.features}</h2>
+              <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
                 {project.features.map((feature, index) => (
                   <div
                     key={index}
-                    className="flex items-center space-x-3 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm"
-                  >
-                    <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0" />
-                    <span className="text-gray-700 dark:text-gray-300">{feature}</span>
+                    className='flex items-center space-x-3 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm'>
+                    <CheckCircle className='w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0' />
+                    <span className='text-gray-700 dark:text-gray-300'>{feature}</span>
                   </div>
                 ))}
               </div>
@@ -387,72 +355,62 @@ const ProjectDetailPage = ({ isDark, language, toggleTheme, toggleLanguage }) =>
           </div>
 
           {/* Sidebar */}
-          <div className="lg:col-span-1 space-y-8">
+          <div className='lg:col-span-1 space-y-8'>
             {/* Project Info */}
             <motion.section
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg"
-            >
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6">
-                Project Info
-              </h3>
-              
-              <div className="space-y-4">
+              className='bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg'>
+              <h3 className='text-xl font-bold text-gray-900 dark:text-white mb-6'>Project Info</h3>
+
+              <div className='space-y-4'>
                 <div>
-                  <dt className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">
-                    {t.projectType}
-                  </dt>
-                  <dd className="text-gray-900 dark:text-white">{project.type}</dd>
+                  <dt className='text-sm font-medium text-gray-500 dark:text-gray-400 mb-1'>{t.projectType}</dt>
+                  <dd className='text-gray-900 dark:text-white'>{project.type}</dd>
                 </div>
-                
+
                 <div>
-                  <dt className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">
-                    {t.status}
-                  </dt>
-                  <dd className="flex items-center">
-                    <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${
-                      project.status === 'completed'
-                        ? 'bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-400'
-                        : 'bg-yellow-100 dark:bg-yellow-900/20 text-yellow-800 dark:text-yellow-400'
-                    }`}>
+                  <dt className='text-sm font-medium text-gray-500 dark:text-gray-400 mb-1'>{t.status}</dt>
+                  <dd className='flex items-center'>
+                    <span
+                      className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${
+                        project.status === 'completed'
+                          ? 'bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-400'
+                          : 'bg-yellow-100 dark:bg-yellow-900/20 text-yellow-800 dark:text-yellow-400'
+                      }`}>
                       {project.status === 'completed' ? t.completed : t.development}
                     </span>
                   </dd>
                 </div>
-                
+
                 <div>
-                  <dt className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">
-                    Date Completed
-                  </dt>
-                  <dd className="flex items-center text-gray-900 dark:text-white">
-                    <Calendar size={16} className="mr-2" />
+                  <dt className='text-sm font-medium text-gray-500 dark:text-gray-400 mb-1'>Date Completed</dt>
+                  <dd className='flex items-center text-gray-900 dark:text-white'>
+                    <Calendar size={16} className='mr-2' />
                     {new Date(project.date).toLocaleDateString()}
                   </dd>
                 </div>
               </div>
 
-              <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
-                <div className="flex space-x-3">
+              <div className='mt-6 pt-6 border-t border-gray-200 dark:border-gray-700'>
+                <div className='flex space-x-3'>
                   {project.live && (
                     <a
                       href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 inline-flex items-center justify-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm"
-                    >
-                      <ExternalLink size={16} className="mr-2" />
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      className='flex-1 inline-flex items-center justify-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm'>
+                      <ExternalLink size={16} className='mr-2' />
                       {t.liveDemo}
                     </a>
                   )}
                   <a
                     href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 inline-flex items-center justify-center px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors text-sm"
-                  >
-                    <Github size={16} className="mr-2" />
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='flex-1 inline-flex items-center justify-center px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors text-sm'>
+                    <Github size={16} className='mr-2' />
                     Code
                   </a>
                 </div>
@@ -464,24 +422,18 @@ const ProjectDetailPage = ({ isDark, language, toggleTheme, toggleLanguage }) =>
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg"
-            >
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6">
-                {t.technologies}
-              </h3>
-              
-              <div className="space-y-3">
+              className='bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg'>
+              <h3 className='text-xl font-bold text-gray-900 dark:text-white mb-6'>{t.technologies}</h3>
+
+              <div className='space-y-3'>
                 {project.tech.map((tech, index) => {
-                  const IconComponent = techIcons[tech] || Code;
+                  const IconComponent = techIcons[tech] || Code
                   return (
-                    <div
-                      key={index}
-                      className="flex items-center space-x-3 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg"
-                    >
-                      <IconComponent className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                      <span className="text-gray-900 dark:text-white font-medium">{tech}</span>
+                    <div key={index} className='flex items-center space-x-3 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg'>
+                      <IconComponent className='w-5 h-5 text-blue-600 dark:text-blue-400' />
+                      <span className='text-gray-900 dark:text-white font-medium'>{tech}</span>
                     </div>
-                  );
+                  )
                 })}
               </div>
             </motion.section>
@@ -489,7 +441,7 @@ const ProjectDetailPage = ({ isDark, language, toggleTheme, toggleLanguage }) =>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ProjectDetailPage;
+export default ProjectDetailPage
