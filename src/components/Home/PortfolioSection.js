@@ -34,6 +34,21 @@ const PortfolioSection = () => {
       date: '2024-01-15'
     },
     {
+      id: 'sss-web',
+      title: 'SSS Admin Web',
+      description:
+        'SSS Admin Web is a comprehensive web application built with React and Tailwind CSS for managing Skylera Security System operations. The platform provides area and checkpoint patrol management, user management system, and detailed activity reporting. Additional features include payslip generation and other administrative tools to streamline security operations and personnel management.',
+      tech: ['React', 'Tailwind CSS', 'TypeScript', 'SQL Server'],
+      category: 'Web App',
+      live: 'https://sss.skylerasolutions.com/',
+      appStore: '',
+      playStore: '',
+      github: '',
+      images: ['project_images/sss_web.png'],
+      status: 'completed',
+      date: '2025-01-01'
+    },
+    {
       id: 'somatua',
       title: 'Somatua ERP',
       description:
@@ -64,32 +79,19 @@ const PortfolioSection = () => {
       date: '2024-03-10'
     },
     {
-      id: 'api-gateway',
-      title: 'API Gateway Service',
-      description: 'Microservices architecture with Node.js and MongoDB',
-      tech: ['Node.js', 'Express', 'MongoDB', 'Docker'],
-      category: 'Backend App',
+      id: 'pettycash',
+      title: 'DCT PettyCash',
+      description:
+        'DCT PettyCash is a comprehensive mobile application designed for managing petty cash transactions and fund transfers. The app enables transfers between Admin and non-admin Users, between non-admin Users, and from non-admin Users to Admin. It also provides features for Admin to withdraw non-admin User balances and facilitates BON payments for both Admin and non-admin Users, ensuring efficient cash flow management within the organization.',
+      tech: ['Java', 'SQL Server', 'Android Studio'],
+      category: 'Mobile App',
       live: '',
       appStore: '',
-      playStore: '',
-      github: 'https://github.com/hariprediansyah/api-gateway',
-      images: ['project_images/asamba.png'],
-      status: 'development',
-      date: '2024-04-05'
-    },
-    {
-      id: 'chat-app',
-      title: 'Real-time Chat App',
-      description: 'WebSocket-powered chat application with React',
-      tech: ['React', 'Socket.io', 'Node.js', 'PostgreSQL'],
-      category: 'Web App',
-      live: 'https://chat-app-demo.com',
-      appStore: '',
-      playStore: '',
-      github: 'https://github.com/hariprediansyah/chat-app',
-      images: ['project_images/asamba.png'],
-      status: 'development',
-      date: '2024-05-01'
+      playStore: 'https://play.google.com/store/apps/details?id=com.advantagescm.pettycash&hl=id',
+      github: '',
+      images: ['project_images/pettycash.png'],
+      status: 'completed',
+      date: '2022-12-11'
     }
   ]
 

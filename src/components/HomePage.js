@@ -122,7 +122,7 @@ const HomePage = () => {
 
       <CustomCursor cursorPos={cursorPos} handPos={handPos} showHand={showHand} />
 
-      <Astronaut />
+      {/* <Astronaut /> */}
     </div>
   )
 }
