@@ -28,6 +28,110 @@ html {
 @keyframes float {
   0%,
   100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient-shift {
+  animation: gradient-shift 8s ease infinite;
+  background-size: 200% 200%;
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 2s ease-out;
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes space-float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-30px) rotate(180deg);
+  }
+}
+
+.animate-space-float {
+  animation: space-float 8s ease-in-out infinite;
+}
+
+@keyframes shooting-star {
+  0% {
+    transform: translateX(-100px) translateY(0px);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(calc(100vw + 100px)) translateY(-100px);
+    opacity: 0;
+  }
+}
+
+.animate-shooting-star {
+  animation: shooting-star 4s linear infinite;
+}
+
+@keyframes planet-rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-planet-rotation {
+  animation: planet-rotation 30s linear infinite;
+}
+
+/* Astronaut animations */
+@keyframes astronaut-float {
+  0%,
+  100% {
     transform: translateY(0px);
   }
   50% {
@@ -35,8 +139,24 @@ html {
   }
 }
 
-.animate-float {
-  animation: float 3s ease-in-out infinite;
+@keyframes astronaut-bounce {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(30px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-astronaut-float {
+  animation: astronaut-float 3s ease-in-out infinite;
+}
+
+.animate-astronaut-bounce {
+  animation: astronaut-bounce 1.5s ease-in-out;
 }
 
 /* Gradient text animation */
@@ -313,25 +433,6 @@ textarea:focus {
 
 .btn-hover-transition:active::before {
   background-color: #3b82f6; /* blue-600 */
-}
-
-body,
-html {
-  cursor: none;
-}
-
-.cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: rgb(255, 255, 255);
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: transform 0.08s linear, opacity 0.2s;
 }
 
 .hand {
