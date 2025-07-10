@@ -94,7 +94,7 @@ const HeroSection = ({ scrollToSection, viewWorkBtnRef, setShowHand, setHandPos,
             {/* Profile Image */}
             <div className='relative w-72 h-72 rounded-full overflow-hidden shadow-2xl shadow-blue-600/40 border-4 border-blue-500/40 bg-gradient-to-br from-blue-600/20 to-indigo-600/20'>
               <img
-                src='/Profile.jpg'
+                src='/profile.jpg'
                 alt='Hari Prediansyah'
                 className='w-full h-full object-cover object-center'
                 style={{ objectPosition: 'center 20%' }}
