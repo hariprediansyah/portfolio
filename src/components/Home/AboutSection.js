@@ -23,8 +23,8 @@ const AboutSection = () => {
         starfieldOpacity={0.3}
         numberOfStars={50}
         nebulaIntensity={0.08}
-        showShootingStars={false}
-        showPlanets={false}
+        showShootingStars={true}
+        showPlanets={true}
         showConstellationLines={true}
       />
 

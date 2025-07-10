@@ -14,6 +14,7 @@ const App = () => {
   //App
   const [isDark, setIsDark] = useState(true)
   const [isLoading, setIsLoading] = useState(true)
+  const [showLoading, setShowLoading] = useState(true)
 
   const toggleTheme = () => {
     setIsDark(!isDark)
@@ -24,16 +25,24 @@ const App = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false)
-    }, 1500)
+    }, 2000)
     return () => clearTimeout(timer)
   }, [])
 
-  if (isLoading) {
-    return <LoadingSpinner />
+  // Fade out loading spinner setelah loading selesai
+  useEffect(() => {
+    if (!isLoading) {
+      const fadeTimer = setTimeout(() => setShowLoading(false), 500)
+      return () => clearTimeout(fadeTimer)
+    }
+  }, [isLoading])
+
+  if (showLoading) {
+    return <LoadingSpinner show={isLoading} />
   }
 
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${isDark ? 'dark' : ''}`}>
+    <div className={`min-h-screen transition-colors duration-300 bg-black dark:bg-black ${isDark ? 'dark' : ''}`}>
       <Routes>
         <Route path='/' element={<HomePage isDark={isDark} toggleTheme={toggleTheme} />} />
         <Route path='/projects' element={<AllProjectsPage isDark={isDark} toggleTheme={toggleTheme} />} />

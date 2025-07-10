@@ -1,6 +1,22 @@
 import React from 'react'
 import Starfield from '../Starfield'
 
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min
+}
+function getRandomFloat(min, max) {
+  return Math.random() * (max - min) + min
+}
+
+const shootingStarColors = ['from-white', 'from-cyan-300', 'from-purple-300', 'from-blue-300']
+const planetColors = [
+  'from-blue-600 to-blue-800',
+  'from-slate-600 to-slate-800',
+  'from-indigo-600 to-indigo-800',
+  'from-pink-500 to-purple-700',
+  'from-yellow-400 to-yellow-700'
+]
+
 const SpaceBackground = ({
   starfieldOpacity = 0.3,
   numberOfStars = 100,
@@ -9,6 +25,37 @@ const SpaceBackground = ({
   showPlanets = false,
   showConstellationLines = false
 }) => {
+  // Generate random shooting stars
+  const shootingStars = React.useMemo(() => {
+    if (!showShootingStars) return []
+    const count = getRandomInt(5, 10)
+    return Array.from({ length: count }).map((_, i) => {
+      const top = getRandomInt(10, 80) // vh
+      const left = getRandomInt(0, 10) // vw, start from left
+      const width = getRandomFloat(1, 2.5)
+      const height = getRandomFloat(0.4, 0.7)
+      const color = shootingStarColors[getRandomInt(0, shootingStarColors.length - 1)]
+      const delay = `${getRandomFloat(0, 5).toFixed(1)}s`
+      const duration = `${getRandomFloat(3, 7).toFixed(1)}s`
+      return { top, left, width, height, color, delay, duration, key: i }
+    })
+  }, [showShootingStars])
+
+  // Generate random planets
+  const planets = React.useMemo(() => {
+    if (!showPlanets) return []
+    const count = getRandomInt(2, 3)
+    return Array.from({ length: count }).map((_, i) => {
+      const size = getRandomInt(64, 128) // px, lebih besar
+      const top = getRandomInt(10, 80) // vh
+      const left = getRandomInt(10, 80) // vw
+      const color = planetColors[getRandomInt(0, planetColors.length - 1)]
+      const blur = getRandomInt(1, 2) === 1 ? 'blur-sm' : 'blur-md'
+      const delay = `${getRandomFloat(0, 4).toFixed(1)}s`
+      return { top, left, size, color, blur, delay, key: i }
+    })
+  }, [showPlanets])
+
   return (
     <>
       {/* Deep Space Background - Konsisten untuk semua section */}
@@ -37,41 +84,36 @@ const SpaceBackground = ({
         twinkle={false}
       />
 
-      {/* Shooting Stars - Opsional */}
-      {showShootingStars && (
-        <>
+      {/* Shooting Stars - Random */}
+      {showShootingStars &&
+        shootingStars.map((star) => (
           <div
-            className='absolute top-20 left-1/4 w-1 h-1 bg-white rounded-full animate-ping'
-            style={{ animationDelay: '0s', animationDuration: '3s' }}></div>
-          <div
-            className='absolute top-40 right-1/3 w-1 h-1 bg-blue-300 rounded-full animate-ping'
-            style={{ animationDelay: '2s', animationDuration: '4s' }}></div>
-          <div
-            className='absolute bottom-40 left-1/2 w-1 h-1 bg-purple-300 rounded-full animate-ping'
-            style={{ animationDelay: '4s', animationDuration: '5s' }}></div>
+            key={star.key}
+            className={`absolute w-[${star.width}rem] h-[${star.height}rem] bg-gradient-to-r ${star.color} to-transparent animate-shooting-star`}
+            style={{
+              top: `${star.top}vh`,
+              left: `${star.left}vw`,
+              animationDelay: star.delay,
+              animationDuration: star.duration,
+              borderRadius: '9999px',
+              opacity: 0.8
+            }}></div>
+        ))}
 
-          <div className='absolute top-32 left-0 w-2 h-0.5 bg-gradient-to-r from-white to-transparent animate-shooting-star'></div>
+      {/* Planets - Random */}
+      {showPlanets &&
+        planets.map((planet) => (
           <div
-            className='absolute top-48 left-0 w-1.5 h-0.5 bg-gradient-to-r from-cyan-300 to-transparent animate-shooting-star'
-            style={{ animationDelay: '2s', animationDuration: '6s' }}></div>
-          <div
-            className='absolute top-64 left-0 w-1 h-0.5 bg-gradient-to-r from-purple-300 to-transparent animate-shooting-star'
-            style={{ animationDelay: '4s', animationDuration: '5s' }}></div>
-        </>
-      )}
-
-      {/* Planets - Opsional */}
-      {showPlanets && (
-        <>
-          <div className='absolute top-32 right-16 w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-800 rounded-full blur-sm animate-float shadow-lg shadow-blue-600/20'></div>
-          <div
-            className='absolute bottom-32 left-20 w-12 h-12 bg-gradient-to-br from-slate-600 to-slate-800 rounded-full blur-sm animate-float shadow-lg shadow-slate-600/20'
-            style={{ animationDelay: '3s' }}></div>
-          <div
-            className='absolute top-1/2 left-1/4 w-8 h-8 bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-full blur-sm animate-float shadow-lg shadow-indigo-600/20'
-            style={{ animationDelay: '1.5s' }}></div>
-        </>
-      )}
+            key={planet.key}
+            className={`absolute rounded-full ${planet.blur} animate-float shadow-lg shadow-blue-600/20 bg-gradient-to-br ${planet.color}`}
+            style={{
+              top: `${planet.top}vh`,
+              left: `${planet.left}vw`,
+              width: planet.size,
+              height: planet.size,
+              animationDelay: planet.delay
+            }}></div>
+        ))}
 
       {/* Space Dust - Konsisten */}
       <div

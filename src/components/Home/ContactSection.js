@@ -78,8 +78,8 @@ const ContactSection = () => {
         starfieldOpacity={0.35}
         numberOfStars={45}
         nebulaIntensity={0.1}
-        showShootingStars={false}
-        showPlanets={false}
+        showShootingStars={true}
+        showPlanets={true}
         showConstellationLines={true}
       />
 
